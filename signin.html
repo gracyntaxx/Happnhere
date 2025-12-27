@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In / Register - HappnHere</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+ 
+
+<style>
+:root {
+  --brown: #6d4c41;
+  --yellow: #FFD54F;
+  --white: #fff;
+  --black: #1c1c1c;
+  --light-grey: #fffaf3;
+  --grey: #7b7b7b;
+}
+
+body {
+  margin: 0;
+  background: var(--light-grey);
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+  background: var(--yellow);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+}
+
+.logo {
+  font-weight: 700;
+  color: var(--brown);
+  font-size: 1.4rem;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--brown);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: var(--yellow);
+}
+
+/*  Main Section  */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 8rem);
+  padding: 40px 20px;
+}
+
+form {
+  background: #FFF9E6;
+  padding: 36px 28px;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 550px;
+  box-shadow: 0 12px 28px rgba(109, 76, 65, 0.18);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+form:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(109, 76, 65, 0.2);
+}
+
+form h2 {
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  color: var(--brown);
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin: 10px 0 6px;
+  font-weight: 500;
+  color: var(--brown);
+}
+
+input, select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(109,76,65,0.25);
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  transition: 0.25s;
+}
+
+input:focus, select:focus {
+  border-color: var(--brown);
+  box-shadow: 0 4px 12px rgba(109,76,65,0.15);
+  outline: none;
+}
+
+input[type="radio"], input[type="checkbox"] {
+  width: auto;
+  margin-right: 6px;
+  accent-color: var(--brown);
+}
+
+/* Social Buttons */
+.social-signin {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.social-signin button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: 1px solid var(--brown);
+  background: var(--white);
+  color: var(--brown);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.social-signin button:hover {
+  background: var(--brown);
+  color: white;
+}
+
+.social-signin button img {
+  width: 22px;
+  height: 22px;
+  margin-right: 10px;
+}
+
+.or-divider {
+  font-weight: 500;
+  color: #8D6E63;
+  margin: 15px 0;
+  font-size: 0.95rem;
+}
+
+/* Buttons */
+.btn-group {
+  text-align: center;
+  margin-top: 20px;
+}
+
+input[type="submit"], input[type="reset"] {
+  background: var(--brown);
+  color: var(--white);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  margin: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover {
+  background: var(--yellow);
+  color: var(--brown);
+}
+
+progress, meter {
+  width: 100%;
+  margin-top: 6px;
+  border-radius: 6px;
+  height: 12px;
+}
+
+/* Footer & Aside */
+aside {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 0.95rem;
+  color: var(--grey);
+}
+
+aside a {
+  color: var(--brown);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+aside a:hover {
+  color: var(--yellow);
+}
+
+footer {
+  background: var(--black);
+  color: var(--white);
+  text-align: center;
+  padding: 18px 0;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  form { padding: 28px 16px; }
+  input, select { font-size: 0.9rem; }
+  form h2 { font-size: 1.5rem; }
+}
+</style>
+
+<!-- JS -->
+<script src="scripts/validation.js" defer></script>
+</head>
+
+<body onload="pageLoaded()">
+<header>
+  <nav class="main-nav">
+    <div class="logo">happnHere</div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="index.html#events" class="nav-link">Events</a></li>
+      <li><a href="index.html#workshops" class="nav-link">Workshops</a></li>
+      <li><a href="index.html#trips" class="nav-link">Trips</a></li>
+      <li><a href="index.html#community" class="nav-link">Community</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <form id="signinForm" onsubmit="return validateForm()" onreset="resetForm()">
+    <h2>Join the Community 🎉</h2>
+
+    <div class="social-signin">
+      <button type="button">
+        <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google">
+        Sign in with Google
+      </button>
+      <button type="button">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+        Sign in with Facebook
+      </button>
+    </div>
+
+    <p class="or-divider">— or join manually —</p>
+
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="name" placeholder="Enter your full name" required autofocus>
+
+   <label for="email">Email Address:</label>
+<input type="email" 
+       id="email" 
+       name="email" 
+       placeholder="example@gmail.com"
+       pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$" 
+       title="Please enter a valid Gmail address (must end with @gmail.com)" 
+       required>
+
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" placeholder="At least 6 characters" pattern=".{6,}" required>
+    <progress id="strengthBar" value="0" max="100"></progress>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" placeholder="10-digit mobile no." pattern="[0-9]{10}" required>
+
+    <label>Gender:</label>
+    <input type="radio" name="gender" value="Male" required> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <input type="radio" name="gender" value="Other"> Other
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" min="13" max="100" placeholder="Enter your age" required>
+
+    <label for="profession">Profession:</label>
+    <input type="text" id="profession" name="profession" placeholder="Your profession" required>
+
+    <label for="interest">Your Interest:</label>
+    <select id="interest" name="interest" required>
+      <option value="">Select</option>
+      <option value="music">Music Events</option>
+      <option value="workshops">Workshops</option>
+      <option value="adventure">Adventure Trips</option>
+      <option value="community">Local Meetups</option>
+    </select>
+
+    <label for="eventType">Preferred Event Type:</label>
+    <select id="eventType" name="eventType" required>
+      <option value="">Select</option>
+      <option value="paid">Paid</option>
+      <option value="free">Free</option>
+      <option value="both">Both</option>
+    </select>
+
+    <label><input type="checkbox" id="agree" required> I agree to the Terms & Conditions</label>
+
+    <label>Your satisfaction with happnHere:</label>
+    <meter id="satisfaction" min="0" max="100" value="70"></meter>
+
+   <div class="btn-group">
+  <input type="submit" value="Submit" formaction="Signedindex.html">
+  <input type="reset" value="Reset">
+</div>
+
+  </form>
+</main>
+
+<aside>
+  <p>Already have an account? <a href="index.html">Go back to Home</a></p>
+</aside>
+
+<footer>
+  <p>© 2025 happnHere | Built for Goa’s vibrant community 🌺</p>
+</footer>
+</body>
+</html>
